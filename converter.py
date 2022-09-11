@@ -7,4 +7,7 @@ window.title("Py Currency Converter")
 first_currency_entry = Entry(width=20)
 first_currency_entry.grid(row=0, column=0)
 
+second_currency_entry = Entry(width=20)
+second_currency_entry.grid(row=1, column=0)
+
 window.mainloop()
