@@ -19,9 +19,13 @@ first_currency_drop_menu.config(width=7)
 first_currency_drop_menu.grid(row=0, column=1)
 
 second_currency_drop_menu_value = StringVar()
-second_currency_drop_menu_value.set(currencies[0])
+second_currency_drop_menu_value.set(currencies[1])
 second_currency_drop_menu = OptionMenu(window, second_currency_drop_menu_value, *currencies)
 second_currency_drop_menu.config(width=7)
 second_currency_drop_menu.grid(row=1, column=1)
+
+# TODO: add command for button
+submit_button = Button(text="Convert")
+submit_button.grid(row=2, column=0, columnspan=2)
 
 window.mainloop()
