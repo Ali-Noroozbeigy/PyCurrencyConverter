@@ -1,5 +1,6 @@
 from tkinter import *
 import requests
+from tkinter import messagebox
 
 
 def fetch_available_currencies():
@@ -20,27 +21,30 @@ def fetch_available_currencies():
 
 
 def convert():
-    amount = float(first_currency_entry.get())
+    try:
+        amount = float(first_currency_entry.get())
 
-    first_currency = available_currencies[first_currency_drop_menu_value.get()]  # to get short form
-    second_currency = available_currencies[second_currency_drop_menu_value.get()]
+        first_currency = available_currencies[first_currency_drop_menu_value.get()]  # to get short form
+        second_currency = available_currencies[second_currency_drop_menu_value.get()]
 
-    headers = {
-        "apikey": "0yzKYae0fkOEb8p5L3Yu1itjDHursb0L"
-    }
+        headers = {
+            "apikey": "0yzKYae0fkOEb8p5L3Yu1itjDHursb0L"
+        }
 
-    params = {
-        "to": second_currency,
-        "from": first_currency,
-        "amount": amount
-    }
+        params = {
+            "to": second_currency,
+            "from": first_currency,
+            "amount": amount
+        }
 
-    response = requests.get(url="https://api.apilayer.com/currency_data/convert", params=params, headers=headers)
-    response.raise_for_status()
+        response = requests.get(url="https://api.apilayer.com/currency_data/convert", params=params, headers=headers)
+        response.raise_for_status()
 
-    result = response.json()["result"]
+        result = response.json()["result"]
 
-    second_currency_label.config(text=str(result))
+        second_currency_label.config(text=str(result))
+    except ValueError:
+        messagebox.showerror("Error!", "Please enter number in the field")
 
 
 window = Tk()
