@@ -23,7 +23,9 @@ def fetch_available_currencies():
 def convert():
     try:
         amount = float(first_currency_entry.get())
-
+    except ValueError:
+        messagebox.showerror("Error!", "Please enter number in the field")
+    else:
         first_currency = available_currencies[first_currency_drop_menu_value.get()]  # to get short form
         second_currency = available_currencies[second_currency_drop_menu_value.get()]
 
@@ -43,8 +45,6 @@ def convert():
         result = response.json()["result"]
 
         second_currency_label.config(text=str(result))
-    except ValueError:
-        messagebox.showerror("Error!", "Please enter number in the field")
 
 
 window = Tk()
