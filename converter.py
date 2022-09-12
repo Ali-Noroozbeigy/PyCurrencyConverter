@@ -16,7 +16,6 @@ def fetch_available_currencies():
     for short_form, long_form in response.json()["currencies"].items():
         currencies_dictionary[long_form] = short_form
 
-    print(currencies_dictionary)
     return currencies_dictionary
 
 
@@ -30,18 +29,18 @@ first_currency_entry.grid(row=0, column=0, padx=20, pady=20)
 second_currency_label = Label(text="0.00")
 second_currency_label.grid(row=1, column=0, padx=20, pady=20)
 
-currencies = ["USD", "IRR"]
+currencies = list(fetch_available_currencies().keys())
 
 first_currency_drop_menu_value = StringVar()
 first_currency_drop_menu_value.set(currencies[0])
 first_currency_drop_menu = OptionMenu(window, first_currency_drop_menu_value, *currencies)
-first_currency_drop_menu.config(width=7)
+first_currency_drop_menu.config(width=50)
 first_currency_drop_menu.grid(row=0, column=1, padx=20, pady=20)
 
 second_currency_drop_menu_value = StringVar()
 second_currency_drop_menu_value.set(currencies[1])
 second_currency_drop_menu = OptionMenu(window, second_currency_drop_menu_value, *currencies)
-second_currency_drop_menu.config(width=7)
+second_currency_drop_menu.config(width=50)
 second_currency_drop_menu.grid(row=1, column=1, padx=20, pady=20)
 
 # TODO: add command for button
