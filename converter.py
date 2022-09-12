@@ -1,4 +1,24 @@
 from tkinter import *
+import requests
+
+
+def fetch_available_currencies():
+    headers = {
+        "apikey": "0yzKYae0fkOEb8p5L3Yu1itjDHursb0L"
+    }
+
+    response = requests.get(url="https://api.apilayer.com/currency_data/list", headers=headers)
+    response.raise_for_status()
+
+    currencies_dictionary = {}
+
+    # swapping short form and long form
+    for short_form, long_form in response.json()["currencies"].items():
+        currencies_dictionary[long_form] = short_form
+
+    print(currencies_dictionary)
+    return currencies_dictionary
+
 
 window = Tk()
 window.config(padx=50, pady=50)
