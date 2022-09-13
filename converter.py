@@ -53,7 +53,7 @@ window.config(padx=50, pady=50)
 window.title("Py Currency Converter")
 
 first_currency_entry = Entry(width=20)
-first_currency_entry.focus()
+first_currency_entry.insert(END, "1")
 first_currency_entry.grid(row=0, column=0, padx=20, pady=20)
 
 second_currency_label = Label(text="0.00")
