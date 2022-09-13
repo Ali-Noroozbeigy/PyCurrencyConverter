@@ -1,11 +1,12 @@
 from tkinter import *
 import requests
 from tkinter import messagebox
+from os import environ
 
 
 def fetch_available_currencies():
     headers = {
-        "apikey": "0yzKYae0fkOEb8p5L3Yu1itjDHursb0L"
+        "apikey": environ.get("APILAYER_KEY")
     }
 
     response = requests.get(url="https://api.apilayer.com/currency_data/list", headers=headers)
@@ -30,7 +31,7 @@ def convert():
         second_currency = available_currencies[second_currency_drop_menu_value.get()]
 
         headers = {
-            "apikey": "0yzKYae0fkOEb8p5L3Yu1itjDHursb0L"
+            "apikey": environ.get("APILAYER_KEY")
         }
 
         params = {
