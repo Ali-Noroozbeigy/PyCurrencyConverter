@@ -9,16 +9,20 @@ def fetch_available_currencies():
         "apikey": environ.get("APILAYER_KEY")
     }
 
-    response = requests.get(url="https://api.apilayer.com/currency_data/list", headers=headers)
-    response.raise_for_status()
+    try:
+        response = requests.get(url="https://api.apilayer.com/currency_data/list", headers=headers)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError:
+        messagebox.showerror("Error", "Unauthorized!")
+        exit(-1)
+    else:
+        currencies_dictionary = {}
 
-    currencies_dictionary = {}
+        # swapping short form and long form
+        for short_form, long_form in response.json()["currencies"].items():
+            currencies_dictionary[long_form] = short_form
 
-    # swapping short form and long form
-    for short_form, long_form in response.json()["currencies"].items():
-        currencies_dictionary[long_form] = short_form
-
-    return currencies_dictionary
+        return currencies_dictionary
 
 
 def convert():
