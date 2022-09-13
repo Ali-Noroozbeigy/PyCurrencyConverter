@@ -15,6 +15,9 @@ def fetch_available_currencies():
     except requests.exceptions.HTTPError:
         messagebox.showerror("Error", "Unauthorized!")
         exit(-1)
+    except requests.exceptions.ConnectionError:
+        messagebox.showerror("Error", "Can not connect url")
+        exit(-1)
     else:
         currencies_dictionary = {}
 
