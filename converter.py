@@ -55,6 +55,9 @@ def convert():
         second_currency_label.config(text=str(result))
 
 
+available_currencies = fetch_available_currencies()
+currencies = list(available_currencies.keys())
+
 window = Tk()
 window.config(padx=50, pady=50)
 window.title("Py Currency Converter")
@@ -65,9 +68,6 @@ first_currency_entry.grid(row=0, column=0, padx=20, pady=20)
 
 second_currency_label = Label(text="0.00")
 second_currency_label.grid(row=1, column=0, padx=20, pady=20)
-
-available_currencies = fetch_available_currencies()
-currencies = list(available_currencies.keys())
 
 first_currency_drop_menu_value = StringVar()
 first_currency_drop_menu_value.set("United States Dollar")
