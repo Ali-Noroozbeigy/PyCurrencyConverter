@@ -77,4 +77,6 @@ second_currency_drop_menu.grid(row=1, column=1, padx=20, pady=20)
 submit_button = Button(text="Convert", command=convert)
 submit_button.grid(row=2, column=0, columnspan=2, pady=20)
 
+convert()
+
 window.mainloop()
