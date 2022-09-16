@@ -7,7 +7,7 @@ First you need to install requests module by using the command:
 
 Then you should [sign up for free](https://apilayer.com/signup) for an api key in [APILAYER](https://apilayer.com).
 
-Once you got the api key, you should set it as an environment variable using this command bash command line:
+Once you got the api key, you should set it as an environment variable using this in bash commandline:
 `export APILAYER_KEY="YOUR API KEY"`
 
 Then you can run the program:
